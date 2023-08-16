@@ -1,11 +1,30 @@
 // import { useState } from 'react'
 // import "./App.css";
 // import { Step1 } from "./pages/step1/step1";
-import { CreateNew } from "./pages/createNew/createNew";
-import { ModeToggle } from "./components/mode-toggle";
+import { Card } from "@/components/ui/card";
+import { ModeToggle } from "@/components/mode-toggle";
 import { ThemeProvider } from "@/components/theme-provider";
+import { CreateNew } from "@/pages/createNew/createNew";
+import { Entry } from "./pages/entry/entry";
+import { useRoutes } from "raviger";
+import { Label } from "./components/ui/label";
+import { useState } from "react";
+import type { Record } from "./types";
 
 function App() {
+  const [records, setRecords] = useState<Record[]>([]);
+
+  const handleCreate = (newRecord: Record) => {
+    setRecords([...records, newRecord]);
+  };
+
+  const routes = {
+    "/": () => <Entry records={records} />,
+    "/new": () => <CreateNew handleCreate={handleCreate} />,
+    // '/users/:userId': ({ userId }) => <User id={userId} />
+  };
+  const route = useRoutes(routes);
+
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <div className="flex justify-center py-6">
@@ -15,7 +34,8 @@ function App() {
           </div>
           <div className="flex justify-center max-w-lg">
             <div className="flex flex-col">
-              <CreateNew />
+              <Label>Contact Records</Label>
+              <Card className="p-6">{route}</Card>
             </div>
           </div>
         </div>

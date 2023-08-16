@@ -1,6 +1,3 @@
-// First Partner's name
-// Second Partner's name
-// Date of Fight
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
@@ -12,26 +9,40 @@ import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 import { useState } from "react";
+import { useNavigate } from "raviger";
 
-const CreateNew = () => {
-  const [date, setDate] = useState<Date>();
+import type { Record } from "@/types";
+
+const CreateNew = ({ handleCreate }: { handleCreate: (newRecord: Record) => void }) => {
+  const [date, setDate] = useState<Date | "">("");
+  const [firstPartnerName, setFirstPartnerName] = useState<string>("");
+  const [secondPartnerName, setSecondPartnerName] = useState<string>("");
+  const navigate = useNavigate();
 
   return (
     <div className="px-20">
       <Label>First Partner's Name</Label>
-      <Input className="mb-4" />
+      <Input
+        className="mb-4"
+        onChange={(e) => setFirstPartnerName(e.target.value)}
+        value={firstPartnerName}
+      />
       <Label>Second Partner's Name</Label>
-      <Input className="mb-4" />
-      <Label>Date of Conflict</Label>
+      <Input
+        className="mb-4"
+        onChange={(e) => setSecondPartnerName(e.target.value)}
+        value={secondPartnerName}
+      />
+      <Label>Date of Contact</Label>
       <div>
         <Popover>
           <PopoverTrigger asChild>
             <Button
-              variant={"outline"}
               className={cn(
-                "w-[240px] justify-start text-left font-normal",
+                "w-[240px] justify-start text-left font-normal mb-4",
                 !date && "text-muted-foreground"
               )}
+              variant={"outline"}
             >
               <CalendarIcon className="mr-2 h-4 w-4" />
               {date ? format(date, "PPP") : <span>Pick a date</span>}
@@ -41,6 +52,16 @@ const CreateNew = () => {
             <Calendar mode="single" selected={date} onSelect={setDate} initialFocus />
           </PopoverContent>
         </Popover>
+      </div>
+      <div className="flex justify-end">
+        <Button
+          onClick={() => {
+            handleCreate({ date, firstPartnerName, secondPartnerName });
+            navigate("/");
+          }}
+        >
+          Create
+        </Button>
       </div>
     </div>
   );
