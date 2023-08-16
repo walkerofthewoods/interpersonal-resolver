@@ -39,9 +39,9 @@ const Entry = ({ records }: { records: Record[] }) => {
           return (
             <TableBody key={index}>
               <TableRow>
-                <TableCell>{record.date?.toString()}</TableCell>
-                <TableCell>{record.partnerA}</TableCell>
-                <TableCell>{record.partnerB}</TableCell>
+                <TableCell>{record.date?.toDateString()}</TableCell>
+                <TableCell>{record.firstPartnerName}</TableCell>
+                <TableCell>{record.secondPartnerName}</TableCell>
               </TableRow>
             </TableBody>
           );

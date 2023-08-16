@@ -14,7 +14,7 @@ import { useNavigate } from "raviger";
 import type { Record } from "@/types";
 
 const CreateNew = ({ handleCreate }: { handleCreate: (newRecord: Record) => void }) => {
-  const [date, setDate] = useState<Date | "">("");
+  const [date, setDate] = useState<Date>();
   const [firstPartnerName, setFirstPartnerName] = useState<string>("");
   const [secondPartnerName, setSecondPartnerName] = useState<string>("");
   const navigate = useNavigate();

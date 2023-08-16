@@ -1,7 +1,7 @@
 interface Record {
-  date: Date | string;
-  partnerA: string;
-  partnerB: string;
+  date: Date | undefined;
+  firstPartnerName: string;
+  secondPartnerName: string;
 }
 
 export type { Record };
