@@ -53,8 +53,17 @@ const CreateNew = ({ handleCreate }: { handleCreate: (newRecord: Record) => void
           </PopoverContent>
         </Popover>
       </div>
-      <div className="flex justify-end">
+      <div className="flex gap-3 justify-end">
         <Button
+          onClick={() => {
+            navigate("/");
+          }}
+          variant="secondary"
+        >
+          Cancel
+        </Button>
+        <Button
+          disabled={!date || !firstPartnerName || !secondPartnerName}
           onClick={() => {
             handleCreate({ date, firstPartnerName, secondPartnerName });
             navigate("/");

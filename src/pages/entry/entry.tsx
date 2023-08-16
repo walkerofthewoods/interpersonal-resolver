@@ -31,8 +31,8 @@ const Entry = ({ records }: { records: Record[] }) => {
         <TableHeader>
           <TableRow>
             <TableHead className="w-[130px]">Date</TableHead>
-            <TableHead className="w-[130px]">Partner A</TableHead>
-            <TableHead className="w-[130px]">Partner B</TableHead>
+            <TableHead className="min-w-[130px]">Partner A</TableHead>
+            <TableHead className="min-w-[130px]">Partner B</TableHead>
           </TableRow>
         </TableHeader>
         {records.map((record, index) => {
