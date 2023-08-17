@@ -1,7 +1,7 @@
-interface Record {
-  date: Date | undefined;
+interface ContactRecord {
+  date: Date;
   firstPartnerName: string;
   secondPartnerName: string;
 }
 
-export type { Record };
+export type { ContactRecord };

@@ -9,12 +9,12 @@ import { Entry } from "./pages/entry/entry";
 import { useRoutes } from "raviger";
 import { Label } from "./components/ui/label";
 import { useState } from "react";
-import type { Record } from "./types";
+import type { ContactRecord } from "./types";
 
 function App() {
-  const [records, setRecords] = useState<Record[]>([]);
+  const [records, setRecords] = useState<ContactRecord[]>([]);
 
-  const handleCreate = (newRecord: Record) => {
+  const handleCreate = (newRecord: ContactRecord) => {
     setRecords([...records, newRecord]);
   };
 
@@ -35,7 +35,7 @@ function App() {
           <div className="flex justify-center max-w-lg">
             <div className="flex flex-col">
               <Label>Contact Records</Label>
-              <Card className="p-6">{route}</Card>
+              <Card className="mt-1 p-6">{route}</Card>
             </div>
           </div>
         </div>

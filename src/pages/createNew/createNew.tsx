@@ -11,9 +11,9 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { useState } from "react";
 import { useNavigate } from "raviger";
 
-import type { Record } from "@/types";
+import type { ContactRecord } from "@/types";
 
-const CreateNew = ({ handleCreate }: { handleCreate: (newRecord: Record) => void }) => {
+const CreateNew = ({ handleCreate }: { handleCreate: (newRecord: ContactRecord) => void }) => {
   const [date, setDate] = useState<Date>();
   const [firstPartnerName, setFirstPartnerName] = useState<string>("");
   const [secondPartnerName, setSecondPartnerName] = useState<string>("");

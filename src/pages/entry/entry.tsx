@@ -9,10 +9,13 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useNavigate } from "raviger";
-import type { Record } from "@/types";
+import type { ContactRecord } from "@/types";
 
-const Entry = ({ records }: { records: Record[] }) => {
+const Entry = ({ records }: { records: ContactRecord[] }) => {
   const navigate = useNavigate();
+
+  const sortedRecords = [...records];
+  sortedRecords.sort((a, b) => b.date.valueOf() - a.date.valueOf());
 
   return (
     <>
@@ -25,9 +28,7 @@ const Entry = ({ records }: { records: Record[] }) => {
         Create New
       </Button>
       <Table>
-        <TableCaption>
-          {records.length ? "A list of your recent records." : "No previous records"}
-        </TableCaption>
+        {!records.length && <TableCaption>No previous records</TableCaption>}
         <TableHeader>
           <TableRow>
             <TableHead className="w-[130px]">Date</TableHead>
@@ -35,7 +36,7 @@ const Entry = ({ records }: { records: Record[] }) => {
             <TableHead className="min-w-[130px]">Partner B</TableHead>
           </TableRow>
         </TableHeader>
-        {records.map((record, index) => {
+        {sortedRecords.map((record, index) => {
           return (
             <TableBody key={index}>
               <TableRow>
