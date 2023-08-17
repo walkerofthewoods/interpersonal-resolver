@@ -1,13 +1,10 @@
-// import { useState } from 'react'
-// import "./App.css";
-// import { Step1 } from "./pages/step1/step1";
 import { Card } from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
 import { ModeToggle } from "@/components/mode-toggle";
 import { ThemeProvider } from "@/components/theme-provider";
 import { CreateNew } from "@/pages/createNew/createNew";
-import { Entry } from "./pages/entry/entry";
+import { Entry } from "@/pages/entry/entry";
 import { useRoutes } from "raviger";
-import { Label } from "./components/ui/label";
 import { useState } from "react";
 import type { ContactRecord } from "./types";
 
@@ -21,7 +18,6 @@ function App() {
   const routes = {
     "/": () => <Entry records={records} />,
     "/new": () => <CreateNew handleCreate={handleCreate} />,
-    // '/users/:userId': ({ userId }) => <User id={userId} />
   };
   const route = useRoutes(routes);
 
