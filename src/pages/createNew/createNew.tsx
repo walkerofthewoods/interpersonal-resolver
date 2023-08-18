@@ -54,7 +54,7 @@ const CreateNew = ({ handleCreate }: { handleCreate: (newRecord: ContactRecord) 
       <div className="flex gap-3 justify-end">
         <Button
           onClick={() => {
-            navigate("/");
+            navigate("/interpersonal-resolver");
           }}
           variant="secondary"
         >
@@ -63,8 +63,10 @@ const CreateNew = ({ handleCreate }: { handleCreate: (newRecord: ContactRecord) 
         <Button
           disabled={!date || !firstPartnerName || !secondPartnerName}
           onClick={() => {
-            handleCreate({ date, firstPartnerName, secondPartnerName });
-            navigate("/");
+            if (date && firstPartnerName && secondPartnerName) {
+              handleCreate({ date, firstPartnerName, secondPartnerName });
+            }
+            navigate("/interpersonal-resolver");
           }}
         >
           Create

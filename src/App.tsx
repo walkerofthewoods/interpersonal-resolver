@@ -16,8 +16,8 @@ function App() {
   };
 
   const routes = {
-    "/": () => <Entry records={records} />,
-    "/new": () => <CreateNew handleCreate={handleCreate} />,
+    "/interpersonal-resolver": () => <Entry records={records} />,
+    "/interpersonal-resolver/new": () => <CreateNew handleCreate={handleCreate} />,
   };
   const route = useRoutes(routes);
 

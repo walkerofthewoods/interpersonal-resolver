@@ -22,7 +22,7 @@ const Entry = ({ records }: { records: ContactRecord[] }) => {
       <Button
         className="block mb-10 mx-auto w-8/12"
         onClick={() => {
-          navigate("/new");
+          navigate("/interpersonal-resolver/new");
         }}
       >
         Create New
