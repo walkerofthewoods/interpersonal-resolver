@@ -11,6 +11,8 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { useState } from "react";
 import { useNavigate } from "raviger";
 
+import * as amplitude from "@amplitude/analytics-browser";
+
 import type { ContactRecord } from "@/types";
 
 const CreateNew = ({ handleCreate }: { handleCreate: (newRecord: ContactRecord) => void }) => {
@@ -56,6 +58,7 @@ const CreateNew = ({ handleCreate }: { handleCreate: (newRecord: ContactRecord) 
       <div className="flex gap-3 justify-end">
         <Button
           onClick={() => {
+            amplitude.track("Cancel");
             navigate("/");
           }}
           variant="secondary"
